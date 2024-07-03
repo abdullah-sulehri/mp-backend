@@ -22,4 +22,6 @@ public class CategoryController {
     public ResponseEntity<Category> getCategory(@PathVariable(name = "id") Integer id){
         return ResponseEntity.ok(categoryService.getCategoryById(id));
     }
+
+
 }

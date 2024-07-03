@@ -3,6 +3,8 @@ package com.project.marketplace.entities;
 
 import jakarta.persistence.*;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "categories")
 public class Category {
@@ -17,6 +19,24 @@ public class Category {
 
     @Column(name="description")
     private String description;
+
+    @OneToMany(mappedBy = "category",cascade = CascadeType.ALL)
+    private Set<Ads> ads;
+
+    public Set<Ads> getAds() {
+        return ads;
+    }
+
+    public void setAds(Set<Ads> ads) {
+        this.ads = ads;
+    }
+
+    public Category(Integer id, String categoryName, String description, Set<Ads> ads) {
+        this.id = id;
+        this.categoryName = categoryName;
+        this.description = description;
+        this.ads = ads;
+    }
 
     public Category(Integer id, String categoryName, String description) {
         this.id = id;

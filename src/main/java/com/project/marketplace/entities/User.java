@@ -1,9 +1,8 @@
 package com.project.marketplace.entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import java.util.Set;
 
 @Entity
 @Table(name="users")
@@ -26,6 +25,27 @@ public class User {
 
     @Column(name="cnic")
     private String cnic;
+
+    @OneToMany(mappedBy = "user",cascade = CascadeType.ALL,fetch = FetchType.LAZY)
+    private Set<Ads> ad;
+
+    public Set<Ads> getAd() {
+        return ad;
+    }
+
+    public User(int user_id, String email, String login_id, String pass, String contact, String cnic, Set<Ads> ad) {
+        this.user_id = user_id;
+        this.email = email;
+        this.login_id = login_id;
+        this.pass = pass;
+        this.contact = contact;
+        this.cnic = cnic;
+        this.ad = ad;
+    }
+
+    public void setAd(Set<Ads> ad) {
+        this.ad = ad;
+    }
 
     public User(int id, String email, String login_id, String pass, String contact, String cnic) {
         this.user_id = id;

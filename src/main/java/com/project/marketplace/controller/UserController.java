@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 public class UserController {
     @Autowired
-    private UserSerevice userSerevice;
+    private UserSerevice    userSerevice;
 
     @PostMapping("/user")
     public ResponseEntity<String> saveUser(@RequestBody User user){
