@@ -1,5 +1,6 @@
 package com.project.marketplace.services;
 
+import com.project.marketplace.dto.AdsDto;
 import com.project.marketplace.entities.Ads;
 import com.project.marketplace.repositories.AdsRepository;
 import jdk.jfr.Category;
@@ -17,10 +18,14 @@ public class AdsService {
         adsRepository.save(ads);
     }
 
-    public Ads getAdsById(Integer id){
+    public Ads getAdsById(int id){
        return adsRepository.findById(id).get();
     }
     public List<Ads> getAdsByTitle(String title){
         return adsRepository.findByAdTitle(title);
+    }
+
+    public AdsDto getAdsDtoById(int id){
+        return  new AdsDto(adsRepository.findById(id).get());
     }
 }

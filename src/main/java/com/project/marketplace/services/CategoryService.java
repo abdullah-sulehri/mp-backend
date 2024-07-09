@@ -6,6 +6,8 @@
     import org.springframework.http.ResponseEntity;
     import org.springframework.stereotype.Service;
 
+    import java.util.List;
+
     @Service
     public class CategoryService {
 
@@ -15,11 +17,16 @@
         /*public CategoryService(CategoryRepository categoryRepository){
             this.categoryRepository=categoryRepository;
         }*/
-        public void saveCategory(Category category){
-            categoryRepository.save(category);
+        public Category saveCategory(Category category){
+           return  categoryRepository.save(category);
         }
 
         public Category getCategoryById(Integer id) {
             return categoryRepository.findById(id).get();
+        }
+
+
+        public List<Category> getCategories(){
+            return categoryRepository.findAll();
         }
     }
