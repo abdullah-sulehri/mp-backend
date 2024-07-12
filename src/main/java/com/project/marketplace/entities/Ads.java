@@ -154,6 +154,9 @@ public class Ads {
     @Column(name = "price")
     private double price;
 
+    @Column (name="featured")
+    private boolean featured;
+
     @Column(name = "created_at")
     private LocalDateTime created_at;
 
@@ -162,18 +165,25 @@ public class Ads {
 
     public Ads() {}
 
-    public Ads(long id, User user, Category category, List<AdsImages> adsImagesList, String adTitle, String description, double price, LocalDateTime created_at, LocalDateTime updated_at) {
-        this.id = id;
+    public Ads(User user, Category category, List<AdsImages> images, String adTitle, String description, double price, boolean featured, LocalDateTime created_at, LocalDateTime updated_at) {
         this.user = user;
         this.category = category;
-        this.images = adsImagesList;
+        this.images = images;
         this.adTitle = adTitle;
         this.description = description;
         this.price = price;
+        this.featured = featured;
         this.created_at = created_at;
         this.updated_at = updated_at;
     }
 
+    public boolean isFeatured() {
+        return featured;
+    }
+
+    public void setFeatured(boolean featured) {
+        this.featured = featured;
+    }
     // Getters and setters
 
     public long getId() {

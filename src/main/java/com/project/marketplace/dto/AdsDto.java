@@ -17,7 +17,7 @@ public class AdsDto {
     private UserDto user;
 
 
-   // private Category category;
+   private boolean featured;
 
     private List<AdsImages> adsImagesList;
 
@@ -53,6 +53,7 @@ public class AdsDto {
         this.created_at = ads.getCreated_at();
         this.updated_at = ads.getUpdated_at();
         this.adsImagesList =  ads.getImages();
+        this.featured=ads.isFeatured();
     }
 
     public long getId() {

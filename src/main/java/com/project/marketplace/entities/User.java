@@ -117,15 +117,21 @@ import java.util.Set;
 @Table(name = "users")
 public class User {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private int user_id;
 
     @Column(name = "email")
     private String email;
 
-    @Column(name = "login_id")
-    private String login_id;
+    @Column(name = "username")
+    private String userName;
+
+    @Column(name="gender")
+    private String gender;
+
+    @Column (name="dateofbirth")
+    private String dateOfBirth;
 
     @Column(name = "pass")
     private String pass;
@@ -141,19 +147,27 @@ public class User {
 
     public User() {}
 
-    public User(int user_id, String email, String login_id, String pass, String contact, String cnic) {
-        this.user_id = user_id;
-        this.email = email;
-        this.login_id = login_id;
-        this.pass = pass;
-        this.contact = contact;
-        this.cnic = cnic;
+    public String getGender() {
+        return gender;
     }
 
-    public User(String email, String login_id, String pass, String contact, String cnic, Set<Ads> ad) {
-        this.user_id = user_id;
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public User(String email, String userName, String gender, String dateOfBirth, String pass, String contact, String cnic, Set<Ads> ad) {
         this.email = email;
-        this.login_id = login_id;
+        this.userName = userName;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
         this.pass = pass;
         this.contact = contact;
         this.cnic = cnic;
@@ -178,12 +192,12 @@ public class User {
         this.email = email;
     }
 
-    public String getLogin_id() {
-        return login_id;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setLogin_id(String login_id) {
-        this.login_id = login_id;
+    public void setUserName(String login_id) {
+        this.userName = login_id;
     }
 
     public String getPass() {

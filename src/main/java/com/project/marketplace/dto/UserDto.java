@@ -1,20 +1,19 @@
 package com.project.marketplace.dto;
 
-import com.project.marketplace.entities.Ads;
 import com.project.marketplace.entities.User;
-import jakarta.persistence.*;
 
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class UserDto {
+
+
 
     private int user_id;
 
     private String email;
 
 
-    private String login_id;
+    private String userName;
 
 
     private String pass;
@@ -24,29 +23,53 @@ public class UserDto {
 
 
     private String cnic;
+    private String gender;
+    private String dateOfBirth;
 
 
     private Set<AdsDto> ad;
 
-    public UserDto(int user_id, String email, String login_id, String pass, String contact, String cnic, Set<AdsDto> ad) {
+///CHANGES ID SERIAL BUT IDK
+    public UserDto(int user_id, String email, String userName, String pass, String contact, String cnic, String gender, String dateOfBirth, Set<AdsDto> ad) {
         this.user_id = user_id;
         this.email = email;
-        this.login_id = login_id;
+        this.userName = userName;
         this.pass = pass;
         this.contact = contact;
         this.cnic = cnic;
+        this.gender = gender;
+        this.dateOfBirth = dateOfBirth;
         this.ad = ad;
     }
-
     public UserDto(User user){
         this.user_id = user.getUser_id();
         this.email = user.getEmail();
-        this.login_id = user.getLogin_id();
+        this.userName = user.getUserName();
         this.pass = user.getPass();
         this.contact = user.getContact();
         this.cnic = user.getCnic();
+        this.dateOfBirth=user.getDateOfBirth();
+        this.gender=user.getGender();
         //this.ad = user.getAd().stream().map(AdsDto::new).collect(Collectors.toSet());
     }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public String getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(String dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+
 
     public int getUser_id() {
         return user_id;
@@ -64,12 +87,12 @@ public class UserDto {
         this.email = email;
     }
 
-    public String getLogin_id() {
-        return login_id;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setLogin_id(String login_id) {
-        this.login_id = login_id;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPass() {
