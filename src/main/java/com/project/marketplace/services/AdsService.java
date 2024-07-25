@@ -1,18 +1,26 @@
 package com.project.marketplace.services;
 
 import com.project.marketplace.dto.AdsDto;
+import com.project.marketplace.dto.AdsPageResponse;
+import com.project.marketplace.dto.PageParams;
 import com.project.marketplace.entities.Ads;
+import com.project.marketplace.repositories.AdsPaginationRepository;
 import com.project.marketplace.repositories.AdsRepository;
-import jdk.jfr.Category;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class AdsService {
     @Autowired
     AdsRepository adsRepository;
+
+    @Autowired
+    AdsPaginationRepository adsPaginationRepository;
 
     public void saveAds(Ads ads){
         adsRepository.save(ads);
@@ -25,7 +33,22 @@ public class AdsService {
         return adsRepository.findByAdTitle(title);
     }
 
-    public AdsDto getAdsDtoById(int id){
-        return  new AdsDto(adsRepository.findById(id).get());
+    public com.project.marketplace.dto.AdsDto getAdsDtoById(int id){
+        // ad logic to store unique view
+        return  new com.project.marketplace.dto.AdsDto(adsRepository.findById(id).get());
+    }
+
+
+    public AdsPageResponse findAll(PageParams pageRequest){
+
+        Page<Ads> adsPage=adsPaginationRepository.findAll(
+                PageRequest.of(pageRequest.getPageOffset(), pageRequest.getPageSize()));
+
+        AdsPageResponse adsPageResponse = new AdsPageResponse();
+        adsPageResponse.setPageSize(adsPage.getSize());
+        adsPageResponse.setTotalPages(adsPage.getTotalPages());
+        adsPageResponse.setTotalElements(adsPage.getTotalElements());
+        adsPageResponse.setContent(adsPage.getContent().stream().map(AdsDto::new).collect(Collectors.toList()));
+        return adsPageResponse;
     }
 }

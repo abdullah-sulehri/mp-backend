@@ -2,13 +2,9 @@ package com.project.marketplace.dto;
 
 import com.project.marketplace.entities.Ads;
 import com.project.marketplace.entities.AdsImages;
-import com.project.marketplace.entities.Category;
-import com.project.marketplace.entities.User;
-import jakarta.persistence.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class AdsDto {
 
@@ -34,15 +30,7 @@ public class AdsDto {
 
     private LocalDateTime updated_at;
 
-    /*public AdsDto(long id, User user, String adTitle, String description, double price, LocalDateTime created_at, LocalDateTime updated_at) {
-        this.id = id;
-        this.user = user;
-        this.adTitle = adTitle;
-        this.description = description;
-        this.price = price;
-        this.created_at = created_at;
-        this.updated_at = updated_at;
-    }*/
+
 
     public AdsDto(Ads ads){
         this.id = ads.getId();

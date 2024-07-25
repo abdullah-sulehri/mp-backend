@@ -2,7 +2,6 @@ package com.project.marketplace.repositories;
 
 import com.project.marketplace.entities.Ads;
 import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;

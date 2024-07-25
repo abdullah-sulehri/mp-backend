@@ -1,9 +1,6 @@
 package com.project.marketplace.entities;
 
 import jakarta.persistence.*;
-import org.springframework.web.bind.annotation.PathVariable;
-
-import java.nio.file.Path;
 
 @Entity
 @Table(name = "ads_images")

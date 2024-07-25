@@ -127,6 +127,7 @@ public class User {
     @Column(name = "username")
     private String userName;
 
+
     @Column(name="gender")
     private String gender;
 
