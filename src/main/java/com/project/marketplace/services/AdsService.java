@@ -51,4 +51,9 @@ public class AdsService {
         adsPageResponse.setContent(adsPage.getContent().stream().map(AdsDto::new).collect(Collectors.toList()));
         return adsPageResponse;
     }
+
+    public List<AdsDto> getAdsByCategoryName(String categoryName){
+        return adsRepository.findByCategoryCategoryName(categoryName).stream().map(AdsDto::new).collect(Collectors.toList());
+
+    }
 }

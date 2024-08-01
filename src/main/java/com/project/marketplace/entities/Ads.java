@@ -144,6 +144,8 @@ public class Ads {
     @OneToMany(fetch = FetchType.LAZY,cascade =CascadeType.ALL)
     @JoinColumn(name="ad_id", referencedColumnName = "id")
     private List<AdsImages> images;
+    @Column(name = "brand")
+    private String brand;
 
     @Column(name = "ad_title")
     private String adTitle;
@@ -165,10 +167,19 @@ public class Ads {
 
     public Ads() {}
 
-    public Ads(User user, Category category, List<AdsImages> images, String adTitle, String description, double price, boolean featured, LocalDateTime created_at, LocalDateTime updated_at) {
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
+    }
+
+    public Ads(User user, Category category, List<AdsImages> images, String brand , String adTitle, String description, double price, boolean featured, LocalDateTime created_at, LocalDateTime updated_at) {
         this.user = user;
         this.category = category;
         this.images = images;
+        this.brand=brand;
         this.adTitle = adTitle;
         this.description = description;
         this.price = price;

@@ -17,6 +17,10 @@ public class AdsImages {
     @JoinColumn(name = "ad_id", referencedColumnName = "id")
     private  Ads ads;*/
 
+    @Column(name = "ad_id")
+    private Integer adId;
+
+
     public AdsImages(int id, String images_path, Ads ads) {
         this.id = id;
         this.images_path = images_path;

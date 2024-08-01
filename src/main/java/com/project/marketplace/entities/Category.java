@@ -87,15 +87,15 @@ import java.util.Set;
 public class Category {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY  )
     @Column(name = "id")
     private Integer id;
 
     @Column(name = "category_name")
     private String categoryName;
 
-    @Column(name = "description")
-    private String description;
+//    @Column(name = "description")
+//    private String description;
 
     @OneToMany(mappedBy = "category", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
 
@@ -106,13 +106,13 @@ public class Category {
     public Category(Integer id, String categoryName, String description) {
         this.id = id;
         this.categoryName = categoryName;
-        this.description = description;
+        //this.description = description;
     }
 
     public Category(Integer id, String categoryName, String description, Set<Ads> ads) {
         this.id = id;
         this.categoryName = categoryName;
-        this.description = description;
+        //this.description = description;
         this.ads = ads;
     }
 
@@ -134,13 +134,13 @@ public class Category {
         this.categoryName = categoryName;
     }
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+//    public String getDescription() {
+//        return description;
+//    }
+//
+//    public void setDescription(String description) {
+//        this.description = description;
+//    }
 
     public Set<Ads> getAds() {
         return ads;

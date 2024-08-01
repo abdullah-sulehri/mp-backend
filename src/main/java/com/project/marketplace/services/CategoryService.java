@@ -22,7 +22,7 @@
         }
 
         public Category getCategoryById(Integer id) {
-            return categoryRepository.findById(id).get();
+            return categoryRepository.findById(id).isPresent() ? categoryRepository.findById(id).get() : null;
         }
 
 

@@ -13,9 +13,19 @@ public class AdsDto {
     private UserDto user;
 
 
-   private boolean featured;
+    public boolean isFeatured() {
+        return featured;
+    }
+
+    public void setFeatured(boolean featured) {
+        this.featured = featured;
+    }
+
+    private boolean featured;
 
     private List<AdsImages> adsImagesList;
+
+    private String brand;
 
     private String adTitle;
 
@@ -35,13 +45,24 @@ public class AdsDto {
     public AdsDto(Ads ads){
         this.id = ads.getId();
         this.user = new UserDto(ads.getUser());
+
         this.adTitle = ads.getAdTitle();
+        this.brand=ads.getBrand();
+
         this.description = ads.getDescription();
         this.price = ads.getPrice();
         this.created_at = ads.getCreated_at();
         this.updated_at = ads.getUpdated_at();
         this.adsImagesList =  ads.getImages();
         this.featured=ads.isFeatured();
+    }
+
+    public String getBrand() {
+        return brand;
+    }
+
+    public void setBrand(String brand) {
+        this.brand = brand;
     }
 
     public long getId() {

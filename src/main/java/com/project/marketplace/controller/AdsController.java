@@ -46,4 +46,11 @@ public class AdsController {
         return  ResponseEntity.ok(adsService.findAll(pageRequest));
         // return ResponseEntity.ok("Ad Returned");
     }
+
+    @GetMapping("/ads-by-category")
+    public ResponseEntity<List<com.project.marketplace.dto.AdsDto>> getAdsDtoByCategory(
+            @RequestParam(name = "categoryName") String categoryName){
+        return  ResponseEntity.ok(adsService.getAdsByCategoryName(categoryName));
+        // return ResponseEntity.ok("Ad Returned");
+    }
 }

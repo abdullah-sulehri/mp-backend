@@ -17,4 +17,8 @@ public class UserSerevice {
     public User getUserById(Integer user_id){
         return userRepository.findById(user_id).get();
     }
+
+    public User getUserByEmail(String email){
+        return userRepository.findByEmail(email);
+    }
 }
