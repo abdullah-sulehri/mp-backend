@@ -1,18 +1,20 @@
 package com.project.marketplace.dto;
 
 import com.project.marketplace.entities.AdsImages;
-import jakarta.persistence.Column;
-import jakarta.persistence.Id;
+import com.project.marketplace.entities.Ads;
 
 public class AdsImagesDto {
 
     private int id;
 
     private String images_path;
+    private Ads ads;
 
-    public AdsImagesDto(AdsImages adsImages){
+
+    public AdsImagesDto(AdsImages adsImages,Ads ads){
         this.id= adsImages.getId();
-        this.images_path = adsImages.getImages_path();
+        this.images_path = adsImages.getImagesPath();
+        this.ads=ads;
     }
 
     public int getId() {

@@ -10,4 +10,7 @@ public interface AdsRepository extends JpaRepository<Ads,Integer> {
     List<Ads> findByAdTitle(@RequestParam("title") String adTitle);
 
     List<Ads> findByCategoryCategoryName(String categoryName);
+
+    List<Ads> findByAdTitleContains(String adTitle);
+
 }

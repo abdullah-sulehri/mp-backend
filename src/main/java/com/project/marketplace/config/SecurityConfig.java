@@ -46,7 +46,9 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/user").permitAll()
                         .requestMatchers(HttpMethod.POST, "/marketplace/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/marketplace/user").permitAll()
-                        //.requestMatchers(HttpMethod.GET, "/authentication-docs/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/ads-by-category").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/marketplace/ads-by-category").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/authentication-docs/**").permitAll()
 //            our private endpoints
                         .anyRequest().authenticated())
                 .authenticationManager(authenticationManager)

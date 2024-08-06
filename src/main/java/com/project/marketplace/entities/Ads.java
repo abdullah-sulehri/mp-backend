@@ -165,6 +165,9 @@ public class Ads {
     @Column(name = "updated_at")
     private LocalDateTime updated_at;
 
+    @Column(name="location")
+    private String location;
+
     public Ads() {}
 
     public String getBrand() {
@@ -186,6 +189,10 @@ public class Ads {
         this.featured = featured;
         this.created_at = created_at;
         this.updated_at = updated_at;
+    }
+
+    public Ads(long id) {
+        this.id = id;
     }
 
     public boolean isFeatured() {
@@ -267,5 +274,13 @@ public class Ads {
 
     public void setImages(List<AdsImages> adsImagesList) {
         this.images = adsImagesList;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
     }
 }

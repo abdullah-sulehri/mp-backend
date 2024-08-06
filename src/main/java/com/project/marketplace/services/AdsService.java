@@ -11,6 +11,8 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
+import java.time.Instant;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -22,8 +24,12 @@ public class AdsService {
     @Autowired
     AdsPaginationRepository adsPaginationRepository;
 
-    public void saveAds(Ads ads){
+    public long  saveAds(Ads ads){
+        ads.setCreated_at(LocalDateTime.now());
+        ads.setUpdated_at(LocalDateTime.now());
         adsRepository.save(ads);
+        System.out.println(ads.getId());
+        return ads.getId();
     }
 
     public Ads getAdsById(int id){

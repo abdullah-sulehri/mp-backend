@@ -21,4 +21,6 @@ public class AdsImagesService {
     public List<AdsImages> getAllAdsImages() {
         return adsImagesRepository.findAll();
     }
+
+
 }

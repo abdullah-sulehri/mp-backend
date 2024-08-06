@@ -40,7 +40,15 @@ public class AdsDto {
 
     private LocalDateTime updated_at;
 
+    private String location;
 
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
 
     public AdsDto(Ads ads){
         this.id = ads.getId();
@@ -55,6 +63,7 @@ public class AdsDto {
         this.updated_at = ads.getUpdated_at();
         this.adsImagesList =  ads.getImages();
         this.featured=ads.isFeatured();
+        this.location=ads.getLocation();
     }
 
     public String getBrand() {

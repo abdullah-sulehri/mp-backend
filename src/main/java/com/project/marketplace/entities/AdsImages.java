@@ -6,30 +6,35 @@ import jakarta.persistence.*;
 @Table(name = "ads_images")
 public class AdsImages {
     @Id
-    //@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="id")
     private int id;
 
     @Column(name="images_path")
-    private String images_path;
+    private String imagesPath;
 
    /*@ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "ad_id", referencedColumnName = "id")
     private  Ads ads;*/
 
     @Column(name = "ad_id")
-    private Integer adId;
+    private Long adId;
 
 
-    public AdsImages(int id, String images_path, Ads ads) {
+    public AdsImages(int id, String imagesPath, Ads ads) {
         this.id = id;
-        this.images_path = images_path;
+        this.imagesPath = imagesPath;
 //        this.ads = ads;
     }
 
-    public AdsImages(int id, String images_path) {
+    public AdsImages(String imagesPath, Long adId) {
+        this.imagesPath = imagesPath;
+        this.adId = adId;
+    }
+
+    public AdsImages(int id, String imagesPath) {
         this.id = id;
-        this.images_path = images_path;
+        this.imagesPath = imagesPath;
     }
 
     public AdsImages() {
@@ -44,12 +49,12 @@ public class AdsImages {
         this.id = id;
     }
 
-    public String getImages_path() {
-        return images_path;
+    public String getImagesPath() {
+        return imagesPath;
     }
 
-    public void setImages_path(String images_path) {
-        this.images_path = images_path;
+    public void setImagesPath(String images_path) {
+        this.imagesPath = images_path;
     }
 
 /*    public Ads getAds() {
